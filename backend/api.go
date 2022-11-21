@@ -1,6 +1,7 @@
 package backend
 
 import (
+	"github.com/gorilla/handlers"
 	_ "github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	_ "github.com/lib/pq"
@@ -19,6 +20,9 @@ func HandleRequests() (err error) {
 
 	router.Handle("/CheckLogin", CheckLoginHandler).Methods("GET")
 
-	err = http.ListenAndServe(":"+strconv.Itoa(8000), router)
+	origins := handlers.AllowedOrigins([]string{"*"})
+	headers := handlers.AllowedHeaders([]string{"Content-Type"})
+	methods := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE"})
+	err = http.ListenAndServe(":"+strconv.Itoa(8000), handlers.CORS(origins, headers, methods)(router))
 	return
 }

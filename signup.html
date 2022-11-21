@@ -132,7 +132,7 @@
 
     var str=JSON.stringify(jsonObject);
     document.write(str);
-    postData('localhost:8000/register', str)
+    postData('http://localhost:8000/register', str)
 
     // Example POST method implementation:
     async function postData(url, data = {}) {

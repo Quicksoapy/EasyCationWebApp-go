@@ -17,10 +17,11 @@ var BookDownloader = http.HandlerFunc(func(w http.ResponseWriter, r *http.Reques
 
 type userInputRegister struct {
 	Username         string    `json:"username"`
-	Password         string    `json:"password"`
+	Name             string    `json:"name"`
 	Email            string    `json:"email"`
-	Region           string    `json:"region"`
-	Country          string    `json:"country"`
+	Password         string    `json:"password"`
+	Region           string    `json:"region,omitempty"`
+	Country          string    `json:"country,omitempty"`
 	RegisterDateTime time.Time `json:"datetime,omitempty"`
 }
 
@@ -41,7 +42,14 @@ var RegisterHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Reque
 			return
 		}
 	}
-	err = json.Unmarshal(body, v)
+	bodyEscaped, err := strconv.Unquote(string(body))
+	if err != nil {
+		_, err := fmt.Fprint(w, err)
+		if err != nil {
+			return
+		}
+	}
+	err = json.Unmarshal([]byte(bodyEscaped), v)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		_, err := fmt.Fprint(w, err)
