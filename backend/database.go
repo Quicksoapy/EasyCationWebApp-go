@@ -2,7 +2,6 @@ package backend
 
 import (
 	"database/sql"
-	"strconv"
 	"time"
 )
 
@@ -21,7 +20,7 @@ func RegisterUser(db *sql.DB, register userInputRegister) (err error, result sql
 	if err != nil {
 		return
 	}
-	result, err = db.Exec(`insert into "gebruiker"("gebruikersnaam","wachtwoord","email","created_on", "last_login") values($1, $2, $3, $4, $5)`, register.Username, strconv.Itoa(hashedPassword), register.Email, time.Now().UTC(), time.Now().UTC())
+	result, err = db.Exec(`insert into "gebruiker"("gebruikersnaam","wachtwoord","email","region", "country", "created_on", "last_login") values($1, $2, $3, $4, $5, $6, $7)`, register.Username, hashedPassword, register.Email, register.Region, register.Country, time.Now().UTC(), time.Now().UTC())
 
 	return err, result
 }

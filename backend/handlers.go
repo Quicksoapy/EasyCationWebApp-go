@@ -11,6 +11,12 @@ import (
 )
 
 var BookDownloader = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	// return "OKOK"
+	json.NewEncoder(w).Encode("OKOK")
+
 	http.Redirect(w, r, "/book/{id}", http.StatusSeeOther)
 	return
 })
@@ -32,6 +38,12 @@ type userInputLogin struct {
 }
 
 var RegisterHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	// return "OKOK"
+	json.NewEncoder(w).Encode("OKOK")
+
 	v := &userInputRegister{}
 
 	body, err := ioutil.ReadAll(r.Body)
@@ -65,6 +77,12 @@ var RegisterHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Reque
 })
 
 var LoginHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	// return "OKOK"
+	json.NewEncoder(w).Encode("OKOK")
+
 	v := &userInputLogin{}
 
 	body, err := ioutil.ReadAll(r.Body)
@@ -99,6 +117,12 @@ type Response struct {
 }
 
 var CheckLoginHandler = http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	// return "OKOK"
+	json.NewEncoder(w).Encode("OKOK")
+
 	w.WriteHeader(http.StatusOK)
 	response := Response{AccountId: ReadAccountCookie(r)}
 	res, err := json.Marshal(response)

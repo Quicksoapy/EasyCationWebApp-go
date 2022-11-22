@@ -118,17 +118,23 @@
     var Name =$('#name').val();
     var Email = $('#email').val();
     var Password = $('#password').val();
+    var Region = "DEFAULT";
+    var Country = "DEFAULT";
 
     jsonObject={
       "username":"",
       "name":"",
       "email":"",
-      "password":""
+      "password":"",
+      "region":"",
+      "country":""
     }
     jsonObject.username=Username;
     jsonObject.name=Name;
     jsonObject.email=Email;
     jsonObject.password=Password;
+    jsonObject.Region=Region;
+    jsonObject.country=Country;
 
     var str=JSON.stringify(jsonObject);
     document.write(str);

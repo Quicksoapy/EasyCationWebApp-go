@@ -1,11 +1,10 @@
 package backend
 
 import (
-	"crypto/sha512"
-	_ "crypto/sha512"
 	"database/sql"
 	"fmt"
 	"github.com/gorilla/securecookie"
+	"golang.org/x/crypto/bcrypt"
 	"net/http"
 )
 
@@ -60,10 +59,9 @@ func ReadAccountCookie(r *http.Request) string {
 	return ""
 }
 
-func hash(input string) (int, error) {
-	h := sha512.New()
-	// sha from a byte array
-	output, err := h.Write([]byte(input))
+func hash(input string) ([]byte, error) {
+	output, err := bcrypt.GenerateFromPassword([]byte(input), bcrypt.DefaultCost)
+
 	if err != nil {
 		return output, err
 	}

@@ -12,13 +12,13 @@ import (
 func HandleRequests() (err error) {
 	router := mux.NewRouter().StrictSlash(true)
 
-	router.Handle("/book/{id}", BookDownloader).Methods("GET")
+	router.Handle("/book/{id}", BookDownloader).Methods("GET", "OPTIONS")
 
-	router.Handle("/register", RegisterHandler).Methods("POST")
+	router.Handle("/register", RegisterHandler).Methods("POST", "OPTIONS")
 
-	router.Handle("/login", LoginHandler).Methods("GET")
+	router.Handle("/login", LoginHandler).Methods("GET", "OPTIONS")
 
-	router.Handle("/CheckLogin", CheckLoginHandler).Methods("GET")
+	router.Handle("/CheckLogin", CheckLoginHandler).Methods("GET", "OPTIONS")
 
 	origins := handlers.AllowedOrigins([]string{"*"})
 	headers := handlers.AllowedHeaders([]string{"Content-Type"})
