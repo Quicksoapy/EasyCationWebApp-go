@@ -4,13 +4,20 @@
   <meta charset="UTF-8">
   <title>Login</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Sea CDN -->
+<link
+href="https://unpkg.com/@videojs/themes@1.0.1/dist/sea/index.css"
+rel="stylesheet"
+/>
+  <link href="video-js.min.css" rel="stylesheet">
+  <script src="video.min.js"></script>
 </head>
   <body>  
       
       
       <nav class="navbar" id="navbar">
         <a href="index.html">
-        <img class="logo" src="https://media.discordapp.net/attachments/1037658643539173476/1039479244226580520/EasyCation_LONG_PNG_VERSION.png">
+        <img class="logo" src="Easycation logoeasy.png">
         </a>
         <ul class="nav-links">
           <div class="menu">
@@ -30,8 +37,65 @@
            
           </div>
         </ul>
-      </nav>    
-      <h1 style="color: white;">INTRODUCTION PAGE</h1>
+      </nav>
+    <div class="banner"> 
+      <video
+      id="my-video"
+      class="video-js  vjs-theme-sea   vjs-big-play-centered videolayout"
+      controls
+      preload="auto"
+      width="1920"
+      height="500"
+      poster="MY_VIDEO_POSTER.jpg"
+      data-setup="{}"
+      >
+        <source src="introduction.mp4" type='video/mp4'>
+      </video>
+    </div>
+    <div id="form">   
+       <div class="flexx">       
+      <div class="introduction2-form">
+        <h1 class="larger">Over easycation</h1>
+        <p class="large">Easycation is een concept ontwikkeld door een groep eerste jaars ICT-studenten van Fontys. Het streven van easycation is educatie bieden aan iedereen op de wereld. Analfabetisme is een complicatie die veelvoorkomend is bij een online leerproces. Het uitspreken en vervolgens zien van tekst in een eigen taal kan oplossingen bieden voor laaggeletterdheid over de hele wereld, easycation heeft om deze reden een webapp ontwikkeld die ervoor zorgt dat elementen van een website uitgesproken worden in eigen taal zodat iedereen kan leren. Het aanmaken van een account kan gedaan worden door iemand die wel kan lezen/schrijven en het account wordt dan op een fysieke scanner gezet die analfabeten kunnen gebruiken om in te loggen op de website. Zo heeft iedereen, analfabeet of niet een eigen leerproces en account. Samen maken we de wereld een stuk slimmer, doe jij ook mee?</p>
+      </div>        
+      <div class="col-md-6 introduction-form"  > 
         
-    </body>
+          <div class="marginbottom20">    
+      
+        </div>
+        <img class="resize" src="Easycation logo.png">
+        <div class="flex">
+          
+      <blockquote class="fontsize" style="color:black"> Education made </blockquote>
+      <blockquote class="fontsizetype" ><span class="testInput"></span></blockquote>
+    </div> 
+        </div>
+    </div> 
+   
+      <div class="col-md-6 introduction3-form"  >
+        <h1 style="color: white;" class="marginbottom20">Een wereld vol leerzame avonturen betreden?</h1>
+        <button style="background-color: #3366ff" style="width: 10%" id="button" type="submit" class="btnlogin btn-larger btn-block" onclick="location.href='login.html'">BEGINNEN</button>
+      </div>
+     
+    </div>
+    <script src="typed.js"></script>
+    <script src="video.js"></script>
+   
+  <script>
+  
+    
+    var typed = new Typed(".testInput", {
+      strings: [
+        " easy!",
+        " understandable!",
+        " enjoyable!",
+        " global!"
+        
+      ],
+      typeSpeed: 60,
+      backSpeed: 60,
+      loop: true
+    });
+  </script>
+  </body>
 </html>
